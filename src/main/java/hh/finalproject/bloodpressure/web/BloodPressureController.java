@@ -48,4 +48,15 @@ public class BloodPressureController {
 		bprepository.deleteById(BPId);
 		return "redirect:../bloodpressure";
 	}
+	
+	@RequestMapping(value="/edit/{id}")
+	public String editBook(@PathVariable("id") Long BPId, Model model) {
+		model.addAttribute("bloodpressure", bprepository.findById(BPId));
+		return "editBP";
+	}
+	
+	@PostMapping(value="/logout")
+	public String logoutPage() {
+		return "login";
+	}
 }

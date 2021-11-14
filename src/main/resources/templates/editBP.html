@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Track Records of Blood Pressure</title>
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.mins.css"
+	th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body class="bg-success bg-opacity-10">
+<div class="container-sm">
+		<div class="badge rounded-pill bg-warning text-dark">
+			<h5 th:inline="text" class="text-center">Something need to be modified?</h5>
+		</div>
+		<form class="form-control" th:object="${bloodpressure}" th:action="@{../save}"
+			action="#" method="post">
+			<input type="hidden" th:field="*{BPId}" class="form-control"/>
+			<label for="upper">SYST.</label> 
+			<input type="text" id="upper" th:field="*{upper}"/>
+			
+			<label for="lower">DIAST.</label> 
+			<input type="text" id="lower" th:field="*{lower}"/>
+			
+			<label for="pulse">Pulse</label> 
+			<input type="text" id="pulse" th:field="*{pulse}"/>
+			
+			<label for="date">Date</label> 
+			<input type="date" id="date" th:field="*{measurementDate}"/>
+			
+			<label for="time">Time</label> 
+			<input type="time" id="time" th:field="*{measurementTime}"/>
+			
+			<input type="submit" value="Save"
+				class="btn btn-success" />
+		</form>
+	</div>
+</body>
+</html>

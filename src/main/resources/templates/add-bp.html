@@ -7,30 +7,35 @@
 <link type="text/css" rel="stylesheet" href="css/bootstrap.mins.css"
 	th:href="@{css/bootstrap.min.css}" />
 </head>
-<body class="bg-success">
+<body class="bg-success bg-opacity-25">
 	<div class="container-sm">
-		<div class="badge rounded-pill bg-warning text-dark">
-			<h5 th:inline="text" class="text-center">How is your blood pressure today?</h5>
+		<div class="badge rounded-pill bg-warning text-dark bg-opacity-50">
+			<h5 th:inline="text" class="text-center">How is your blood
+				pressure today?</h5>
 		</div>
-		<form class="form-control" th:object="${bloodpressure}" th:action="@{save}"
-			action="#" method="post">
-			<label for="upper">SYST.</label> 
-			<input type="text" id="upper" th:field="*{upper}"/>
-			
-			<label for="lower">DIAST.</label> 
-			<input type="text" id="lower" th:field="*{lower}"/>
-			
-			<label for="pulse">Pulse</label> 
-			<input type="text" id="pulse" th:field="*{pulse}"/>
-			
-			<label for="date">Date</label> 
-			<input type="date" id="date" th:field="*{measurementDate}"/>
-			
-			<label for="time">Time</label> 
-			<input type="time" id="time" th:field="*{measurementTime}"/>
-			
-			<input type="submit" value="Save"
-				class="btn btn-info" />
+		<form class="form-control bg-warning bg-opacity-50" th:object="${bloodpressure}"
+			th:action="@{save}" action="#" method="post">
+			<label for="upper">SYST.</label> <input type="text" id="upper"
+				th:field="*{upper}" />
+			<p>mmHg</p>
+
+			<label for="lower">DIAST.</label> <input type="text" id="lower"
+				th:field="*{lower}" />
+			<p>mmHg</p>
+
+			<label for="pulse">Pulse</label> <input type="text" id="pulse"
+				th:field="*{pulse}" />
+			<p>Beats per a minute</p>
+
+			<label for="date">Date</label> <input type="date" id="date"
+				th:field="*{measurementDate}" />
+			<p>Measured date</p>
+
+			<label for="time">Time</label> <input type="time" pattern="[0-9]{2}:[0-9]{2}:[0-9]{2}" id="time"
+				th:field="*{measurementTime}" />
+			<p>Measured time</p>
+
+			<input type="submit" value="Save" class="btn btn-info" />
 		</form>
 	</div>
 </body>

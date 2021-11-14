@@ -27,11 +27,13 @@ public class BloodpressureApplication {
 	public CommandLineRunner bloodPressureDemo(BPRepository bprepository) {
 		return (args) -> {
 			log.info("save blood pressure");
-			bprepository.save(new BloodPressure(120, 80, 70, LocalTime.now(), LocalDate.now()));
-			bprepository.save(new BloodPressure(130, 99, 86, LocalTime.now(), LocalDate.now()));
-			bprepository.save(new BloodPressure(90, 60, 110, LocalTime.now(), LocalDate.now()));
-			bprepository.save(new BloodPressure(144, 97, 98, LocalTime.now(), LocalDate.now()));
-			bprepository.save(new BloodPressure(125, 70, 88, LocalTime.now(), LocalDate.now()));
+			
+			LocalDate today = LocalDate.now();
+			bprepository.save(new BloodPressure(120, 80, 70, LocalTime.now(), today));
+			bprepository.save(new BloodPressure(130, 99, 86, LocalTime.now(), today));
+			bprepository.save(new BloodPressure(90, 60, 110, LocalTime.now(), today));
+			bprepository.save(new BloodPressure(144, 97, 98, LocalTime.now(), today));
+			bprepository.save(new BloodPressure(125, 70, 88, LocalTime.now(), today));
 
 		};
 	}

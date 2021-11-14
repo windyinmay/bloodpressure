@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class BloodPressure {
 	
@@ -17,7 +19,11 @@ public class BloodPressure {
 	private int upper;
 	private int lower;
 	private int pulse;
+	
+	@DateTimeFormat(pattern = "HH:mm")
 	private LocalTime measurementTime;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate measurementDate;
 	
 	public BloodPressure() {
@@ -81,12 +87,6 @@ public class BloodPressure {
 
 	public void setMeasurementDate(LocalDate measurementDate) {
 		this.measurementDate = measurementDate;
-	}
-
-	@Override
-	public String toString() {
-		return "BloodPressure [BPId=" + BPId + ", upper=" + upper + ", lower=" + lower + ", pulse=" + pulse
-				+ ", measurementTime=" + measurementTime + ", measurementDate=" + measurementDate + "]";
 	}
 
 }
