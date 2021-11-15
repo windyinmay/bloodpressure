@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -20,6 +22,10 @@ public class BloodPressure {
 	private int lower;
 	private int pulse;
 	
+	@ManyToOne
+	@JoinColumn(name = "userid")
+	private User user;
+	
 	@DateTimeFormat(pattern = "HH:mm")
 	private LocalTime measurementTime;
 	
@@ -31,16 +37,17 @@ public class BloodPressure {
 		// TODO Auto-generated constructor stub
 	}
 
-	public BloodPressure(int upper, int lower, int pulse, LocalTime measurementTime,
+	public BloodPressure(User user, int upper, int lower, int pulse, LocalTime measurementTime,
 			LocalDate measurementDate) {
 		super();
 		this.upper = upper;
 		this.lower = lower;
 		this.pulse = pulse;
+		this.user = user;
 		this.measurementTime = measurementTime;
 		this.measurementDate = measurementDate;
 	}
-
+	
 	public Long getBPId() {
 		return BPId;
 	}
@@ -88,5 +95,15 @@ public class BloodPressure {
 	public void setMeasurementDate(LocalDate measurementDate) {
 		this.measurementDate = measurementDate;
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
 
 }
