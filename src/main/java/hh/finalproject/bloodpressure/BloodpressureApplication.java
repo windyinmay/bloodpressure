@@ -29,14 +29,15 @@ public class BloodpressureApplication {
 	public CommandLineRunner bloodPressureDemo(BPRepository bprepository, UserRepository urepository) {
 		return (args) -> {
 			
-			User user1 = new User("Anh", "$2b$10$lkcQkpS33ORGQAOBkiFgUOlkAumgJ1d3.ivS85g0G/pi07x72ewPG", 25, "ADMIN");
+			User user1 = new User("Anh", "$2a$10$e8AjiBnDUtURW/GtFc8VGerrY1p0tDYI2eP/NIPSh3.fE4rbRBh3C", 25, "ADMIN");
 			log.info("save users");
 			urepository.save(user1);
-			urepository.save(new User("Matias", "$2b$10$/iCk9bRRVtk8ztpnhLYQp.JBBbY6vklGtuUd7PjoXtAx4hmmK13z.\n" , 28, "GUEST"));
+			User user2 = new User("Matias", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6" , 28, "GUEST");
+			urepository.save(user2);
 			
 			log.info("save blood pressure");
-			bprepository.save(new BloodPressure(user1, 120, 80, 70, LocalTime.now(), LocalDate.now()));
-			bprepository.save(new BloodPressure(user1, 130, 99, 86, LocalTime.now(), LocalDate.now()));
+			bprepository.save(new BloodPressure(user2, 120, 80, 70, LocalTime.now(), LocalDate.now()));
+			bprepository.save(new BloodPressure(user2, 130, 99, 86, LocalTime.now(), LocalDate.now()));
 			bprepository.save(new BloodPressure(user1, 90, 60, 110, LocalTime.now(), LocalDate.now()));
 			bprepository.save(new BloodPressure(user1, 144, 97, 98, LocalTime.now(), LocalDate.now()));
 			bprepository.save(new BloodPressure(user1, 125, 70, 88, LocalTime.now(), LocalDate.now()));

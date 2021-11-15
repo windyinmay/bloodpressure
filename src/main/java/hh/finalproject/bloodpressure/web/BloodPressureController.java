@@ -1,7 +1,5 @@
 package hh.finalproject.bloodpressure.web;
 
-
-import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import hh.finalproject.bloodpressure.domain.BPRepository;
 import hh.finalproject.bloodpressure.domain.BloodPressure;
-import hh.finalproject.bloodpressure.domain.User;
 import hh.finalproject.bloodpressure.domain.UserRepository;
 
 @Controller
@@ -67,6 +64,7 @@ public class BloodPressureController {
 	@RequestMapping(value="/edit/{id}")
 	public String editBook(@PathVariable("id") Long BPId, Model model) {
 		model.addAttribute("bloodpressure", bprepository.findById(BPId));
+		model.addAttribute("user", urepository.findAll());
 		return "editBP";
 	}
 	
