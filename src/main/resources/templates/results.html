@@ -34,12 +34,10 @@
 			</form>
 		</div>
 		<table
-			class="table table-info table-striped table-hover table-bordered table-sm">
+			class="table table-info table-striped table-hover table-bordered table-sm text-center">
 			<tr>
 				<th>Date</th>
 				<th>Time</th>
-				<th>User</th>
-				<th>Age</th>
 				<th>SYST.</th>
 				<th>DIAST.</th>
 				<th>Pulse</th>
@@ -51,24 +49,41 @@
 			<tr th:each="bloodpressure : ${bloodpressures}">
 				<td th:text="${bloodpressure.measurementDate}"></td>
 				<td th:text="${bloodpressure.measurementTime}"></td>
-				<td></td>
-				<td></td>
 				<td th:text="${bloodpressure.upper} + ' mmHg'"></td>
 				<td th:text="${bloodpressure.lower} + ' mmHg'"></td>
 				<td th:text="${bloodpressure.pulse} + ' Beats/Min'"></td>
 				<td class="text-danger fw-bold"><span
 					th:if="${bloodpressure.upper} &gt; 128">Hypertensive</span> <span
 					th:if="${bloodpressure.upper} &lt; 110">Hypotensive</span></td>
-				<td></td>
+				<td>
+				<span th:if="${bloodpressure.upper} &gt; 128">
+				<ul>
+				<li>Eating a heart-healthy diet with less salt</li>
+				<li>Getting regular physical activity</li>
+				<li>Maintaining a healthy weight or losing weight if you're overweight or obese</li>
+				<li>Limiting the amount of alcohol you drink</li>
+				</ul>
+				</span>
+				<span th:if="${bloodpressure.upper} &lt; 110">
+				<ul>
+				<li>Use more salt</li>
+				<li>Drink more water, less alcohol</li>
+				<li>Eat small, low-carb meals</li>
+				<li>Exercise regularly</li>
+				</ul>
+				</span>
+				</td>
 				<td sec:authorize="hasAuthority('ADMIN')"><a
 					th:href="@{/edit/{id}(id=${bloodpressure.BPId})}"
-					class="btn btn-warning">Edit</a></td>
+					class="btn btn-outline-success">Edit</a></td>
 				<td sec:authorize="hasAuthority('ADMIN')"><a
 					th:href="@{/delete/{id}(id=${bloodpressure.BPId})}"
-					class="btn btn-danger">Delete</a></td>
+					class="btn btn-outline-danger">Delete</a></td>
 		</table>
-		<a th:href="@{/add}" class="btn btn-success">Add New Blood
-			Pressure</a>
+		<div class="card card-body bg-info bg-gradient bg-opacity-10">
+		<a th:href="@{/add}" class="btn btn-outline-success">Add New Blood
+			Pressure Record</a>
+			</div>
 	</div>
 </body>
 </html>

@@ -1,7 +1,5 @@
 package hh.finalproject.bloodpressure.web;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,11 +34,6 @@ public class BloodPressureController {
 		return "results";
 	}
 	
-	//list all
-	@RequestMapping(value="/allBloodPressures", method = RequestMethod.GET)
-	public @ResponseBody List<BloodPressure> bloodPressureRest() {
-	return (List<BloodPressure>) bprepository.findAll();
-	}
 	
 	@RequestMapping(value="/add")
 	public String addBP(Model model) {
