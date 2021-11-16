@@ -8,16 +8,12 @@
 	th:href="@{css/bootstrap.min.css}" />
 </head>
 <body class="bg-info bg-gradient bg-opacity-10">
-	<div class="container">
+	<div class="container card card-body bg-info bg-gradient bg-opacity-10 ">
 		<div class="col-md-4">
-			<div>
-				<h1 th:inline="text" class="text-center">Hello
-					[[${#httpServletRequest.remoteUser}]]!</h1>
-			</div>
 		</div>
 		<div class="text-center">
 			<div class="alert alert-warning ">
-				<h3 th:text="'Hello Heart &#9829; '"></h3>
+				<h3 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]] &#9829;</h3>
 				<p th:text="'Keep track on your blood pressure :)'"></p>
 			</div>
 			<p class="alert alert-warning"
