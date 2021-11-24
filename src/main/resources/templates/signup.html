@@ -31,11 +31,13 @@
 					th:errors="*{passwordCheck}">Password Match Error</p>
 			</div>
 			<br>
-			<div class="d-grid gap-2">
+				<div class="d-grid gap-2">
 				<input type="submit" class="btn btn-outline-danger" value="Signup"></input>
-				<br>
+				<p>Already have an account?</p>
 			</div>
 		</form>
+		<a class="btn btn-success" th:href="@{/login}">Login</a>
+		<br>
 	</div>
 </body>
 </html>
