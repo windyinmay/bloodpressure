@@ -28,6 +28,12 @@ public class BloodPressureController {
 	@Autowired
 	private UserRepository urepository;
 	
+	// Show all students
+    @RequestMapping(value="/login")
+    public String login() {	
+        return "login";
+    }	
+	
 	@RequestMapping(value="/bloodpressure", method = RequestMethod.GET)
 	public String bloodPressureList(Model model) {
 		model.addAttribute("bloodpressures", bprepository.findAll());

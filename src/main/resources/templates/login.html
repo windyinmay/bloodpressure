@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    <head>
+        <title>Login to see your blood pressure tracking records </title>
+        <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+    </head>
+    <body class="bg-success bg-opacity-50 text-light text-center">
+     <div class="container-sm card card-signin my-5 text-light bg-dark">
+        <div class="alert alert-danger" th:if="${param.error}">
+            Invalid username and password.
+        </div>
+        <div class="alert alert-success" th:if="${param.logout}">
+            You have been logged out.
+        </div>
+        <div>
+        <h1>Please Sign In</h1>
+        </div>
+        <form th:action="@{/login}" method="post">
+            <div><label> User Name : <input type="text" name="username" class="form-control"/> </label></div>
+            <div><label> Password: <input type="password" name="password" class="form-control"/> </label></div>
+            <br>
+            <div class="d-grid gap-2 bg-dark bg-opacity-50"><input class="btn btn-outline-info" type="submit" value="Sign In"/></div>
+        </form>
+        <br>
+        <div class="d-grid gap-2 bg-dark bg-opacity-50">
+        <a class="btn btn-outline-danger "th:href="@{/signup}">Sign Up</a>
+        <br>
+        </div>
+       </div>
+    </body>
+</html>
